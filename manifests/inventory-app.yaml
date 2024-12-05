@@ -33,7 +33,7 @@ spec:
           command: ['sh', '-c', 'until nc -z -w 3 inventory-db 5432; do echo waiting for inventory-db; sleep 5; done;']
       containers:
         - name: inventory-app
-          image: change/ForMyImage/content-inventory-app:latest
+          image: thox66/inventory-app:latest
           env:
             - name: INVENTORY_APP_PORT
               value: "8080"

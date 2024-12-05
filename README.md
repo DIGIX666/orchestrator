@@ -27,8 +27,8 @@ To run and manage the Kubernetes cluster on the VM cluster:
   start the application.
 
 To run `kubectl` on your machine to interact with the Kubernetes cluster, you
-need to `export KUBECONFIG=./k3s/k3s.yaml` after you created the VM (e.g. after
-running `./orchestrator.sh create`.
+need to `export KUBECONFIG=./k3s/k3s.yaml` in `.bashrc` or `.zshrc` after you created the VM (e.g. after
+running `./orchestrator.sh create` and `./orchestrator.sh start`).
 
 
 # Questions
@@ -148,3 +148,5 @@ Databases are stateful by nature, requiring persistent storage and stable networ
 ### Can the learner explain the K8s components in less than 15 minutes?
 ```
 ```
+
+psql -U postgres -d billing_db

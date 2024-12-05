@@ -32,7 +32,7 @@ spec:
           command: ['sh', '-c', 'until nc -z -w 3 billing-queue 5672; do echo waiting for queue; sleep 5; done;']
       containers:
         - name: api-gateway-app
-          image: change/ForMyImage/content-api-gateway-app:latest 
+          image: thox66/api-gateway-app:latest
           env:
             - name: RABBITMQ_HOST
               value: billing-queue

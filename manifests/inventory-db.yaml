@@ -30,19 +30,19 @@ spec:
     spec:
       containers:
         - name: inventory-db
-          image: change/ForMyImage/content-postgres-db:latest
+          image: thox66/postgres:alpine 
           env:
-            - name: DB_USER
+            - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
                   name: orchestrator-secrets
                   key: INVENTORY_DB_USER
-            - name: DB_PASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: orchestrator-secrets
                   key: INVENTORY_DB_PASSWORD
-            - name: DB_NAME
+            - name: POSTGRES_NAME
               valueFrom:
                 secretKeyRef:
                   name: orchestrator-secrets

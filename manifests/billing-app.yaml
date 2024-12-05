@@ -31,7 +31,7 @@ spec:
           command: ['sh', '-c', 'until nc -z -w 3 billing-db 5432 && nc -z -w 3 billing-queue 5672; do echo waiting for services; sleep 5; done;']
       containers:
         - name: billing-app
-          image: change/ForMyImage/content-billing-app:latest
+          image: thox66/billing-app:latest
           env:
             - name: BILLING_DB_USER
               valueFrom:

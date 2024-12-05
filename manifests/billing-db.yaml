@@ -31,19 +31,19 @@ spec:
       restartPolicy: Always
       containers:
         - name: billing-db
-          image: change/ForMyImage/content-postgres-db:latest 
+          image: thox66/postgres:alpine 
           env:
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: orchestrator-secrets
-                  key: BILLING_DB_USER
-            - name: DB_PASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: orchestrator-secrets
                   key: BILLING_DB_PASSWORD
-            - name: DB_NAME
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: orchestrator-secrets
+                  key: BILLING_DB_USER
+            - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
                   name: orchestrator-secrets
