@@ -17,8 +17,6 @@ programs, or any equivalent ones:
   interact with the Kubernetes cluster from your machine. Check [this cheat
   sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) to get an
   idea of some useful commands.
-- [*optional*] [minikube](https://kubernetes.io/docs/tasks/tools/#minikube) to
-  deploy the Kubernetes cluster on your machine instead of the VM cluster.
 
 To run and manage the Kubernetes cluster on the VM cluster:
 - Create a `.env` file in the root of the project folder as the example
@@ -150,3 +148,7 @@ Databases are stateful by nature, requiring persistent storage and stable networ
 ```
 
 psql -U postgres -d billing_db
+psql -U user01 -d billing_db
+
+## Add to docker hub
+sudo docker tag <name-of-repo>:<tag> <userdocker>/<choose-name-image>:<tag>

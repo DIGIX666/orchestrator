@@ -31,7 +31,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: billing-db
-          image: thox66/postgres:alpine 
+          image: thox66/postgres-billing:alpine
           env:
             - name: POSTGRES_PASSWORD
               valueFrom:
