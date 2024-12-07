@@ -118,9 +118,23 @@ It ensures the desired number of Prods are running and facilitates rolling updat
 ```
 ---
 ### What is the difference between deployment and StatefulSet in K8s?
-```
 
-```
+| **Criteria**                  | **Deployment**                                    | **StatefulSet**                                   |
+|-------------------------------|--------------------------------------------------|-------------------------------------------------|
+| **Application Type**          | **Stateless** applications                       | **Stateful** applications                        |
+| **Pod Identity**              | Pods are identical and interchangeable.          | Each pod has a **unique identity** (e.g., `app-0`). |
+| **Storage**                   | Generally ephemeral or shared storage.           | Each pod uses a **dedicated persistent volume**. |
+| **Startup Order**             | No specific order for starting pods.             | Pods are started in a strict order.             |
+| **Shutdown Order**            | Pods can be deleted in any order.                | Ordered shutdown to preserve state.             |
+| **Pod Names**                 | Dynamically generated names without persistence. | Fixed and persistent names (e.g., `app-0`, `app-1`). |
+| **Typical Use Cases**         | Web servers, APIs, microservices, workers.       | Databases, Kafka, ZooKeeper, Redis with state.  |
+| **Example Volume**            | Temporary volumes or shared external storage.    | **PersistentVolumeClaim** (PVC) unique per pod. |
+---
+- **Stateless**: An application where each instance is interchangeable and does not retain data between requests. If a pod is deleted or recreated, it does not affect the application since data is usually stored externally (e.g., external databases).
+- **Stateful**: An application where each instance has a unique identity and retains local data necessary for its operation. Losing or recreating a pod can impact the application's overall state.
+
+Use a **Deployment** for stateless applications where pods can be replaced or recreated without impact, and use a **StatefulSet** for stateful applications that require unique identities and persistent data.
+
 ---
 ### What is scaling, and why do we use it?
 ```
@@ -144,11 +158,32 @@ Databases are stateful by nature, requiring persistent storage and stable networ
 ```
 ---
 ### Can the learner explain the K8s components in less than 15 minutes?
-```
-```
 
-psql -U postgres -d billing_db
-psql -U user01 -d billing_db
+### **1. Control Plane**
+- **API Server**: Main interface to manage the cluster.  
+- **Etcd**: Stores all cluster data (state, configuration).  
+- **Controller Manager**: Maintains the desired state (e.g., monitors nodes).  
+- **Scheduler**: Assigns pods to nodes based on resource availability.
+
+### **2. Node Components**
+- **Kubelet**: Ensures pods are running correctly on each node.  
+- **Kube-proxy**: Manages network rules to connect pods and services.  
+- **Container Runtime**: Runs containers (Docker, containerd, CRI-O).
+
+### **3. Additional Components**
+- **Pods**: Basic unit containing one or more containers.  
+- **Services**: Provide stable access points to pods.  
+- **Ingress**: Manages external access (HTTP/HTTPS).  
+- **ConfigMaps/Secrets**: Handle configurations and sensitive data.  
+- **Volumes**: Provide persistent storage to pods.
+---
+## Commands for Postgres
+```
+psql -U <user-name>
+psql -U <user-name> -d <db-name>
+```
 
 ## Add to docker hub
+```
 sudo docker tag <name-of-repo>:<tag> <userdocker>/<choose-name-image>:<tag>
+```
