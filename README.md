@@ -8,9 +8,6 @@ programs installed on your machine:
 - [Vagrant](https://developer.hashicorp.com/vagrant/docs/installation).
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
 
-To interact with the application, it is recommended to install the following
-programs, or any equivalent ones:
-
 - [Postman](https://www.postman.com/downloads/), or any other tool to
   programmatically test API endpoints.
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) to be able to
@@ -19,15 +16,16 @@ programs, or any equivalent ones:
   idea of some useful commands.
 
 To run and manage the Kubernetes cluster on the VM cluster:
-- Create a `.env` file in the root of the project folder as the example
-  provided. You can simply `cp .env.example .env`.
-- Use the provided `./orchestrator.sh` script to create the K3S cluster and
-  start the application.
+- Change `.env.example` to `.env`
 
 To run `kubectl` on your machine to interact with the Kubernetes cluster, you
-need to `export KUBECONFIG=./k3s/k3s.yaml` in `.bashrc` or `.zshrc` after you created the VM (e.g. after
-running `./orchestrator.sh create` and `./orchestrator.sh start`).
+need to `export KUBECONFIG=./k3s/k3s.yaml` in `.bashrc` or `.zshrc`.
 
+RUN
+```bash
+./orchestrator.sh create
+./orchestrator.sh start
+```
 
 # Questions
 ### What is container orchestration, and what are its benefits?
